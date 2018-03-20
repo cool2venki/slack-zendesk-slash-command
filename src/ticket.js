@@ -57,7 +57,9 @@ const sendConfirmation = (ticket) => {
   })
 }
 
-/* Update ticket with Slack and Zendesk details (like user), and submit. */
+/*
+ * Update ticket with Slack and Zendesk details (like user), and submit.
+ */
 const submit = async (userId, ticket) => {
   try {
     ticket.userEmail = await users.lookupSlackUserEmail(userId)
@@ -71,7 +73,9 @@ const submit = async (userId, ticket) => {
   }
 }
 
-/* Construct initial ticket from submission */
+/*
+ * Construct initial ticket from submission
+ */
 const create = (userId, submission) => {
   const ticket = {}
   ticket.userId = userId
