@@ -1,6 +1,8 @@
 # Slack Slash Command for Zendesk
 
-Use a slash command and a dialog to create a ticket in ZenDesk. Once it has been created, send a message to the user with information about their ticket.
+Use a slash command and a dialog to create a ticket in Zendesk. Once it has been created, send a message to the user with information about their ticket.
+
+Based on [template provided by Slack](https://github.com/slackapi/template-slash-command-and-dialogs) with some enhancements, and specific Zendesk API integrations.
 
 ## Slack Setup
 
