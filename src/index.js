@@ -119,7 +119,6 @@ app.post('/interactive-component', (req, res) => {
   }
 })
 
-
 let port = 3000
 
 if (typeof process.env.PORT !== 'undefined') {
