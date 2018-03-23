@@ -119,7 +119,13 @@ app.post('/interactive-component', (req, res) => {
   }
 })
 
-const port = (typeof process.env.PORT === 'undefined') ? 3000 : process.env.PORT
+
+let port = 3000
+
+if (typeof process.env.PORT !== 'undefined') {
+  port = process.env.PORT
+}
+
 app.listen(port, () => {
   debug(`App listening on port ${port}!`)
 })
