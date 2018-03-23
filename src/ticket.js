@@ -62,12 +62,13 @@ const sendConfirmation = (ticket) => {
  */
 const submit = async (userId, ticket) => {
   try {
-    ticket.userEmail = await users.lookupSlackUserEmail(userId)
-    ticket.zendeskUserId = await zendesk.lookupZendeskUserId(ticket.userEmail)
+    const userEmail = await users.lookupSlackUserEmail(userId)
+    const myTicket = { ...ticket, userEmail }
+    myTicket.zendeskUserId = await zendesk.lookupZendeskUserId(userEmail)
     const zendeskTicketId = await zendesk.createZendeskTicket(ticket)
-    ticket.zendeskTicketId = `${zendeskTicketId}`
-    ticket.zendeskTicketUrl = `${process.env.ZENDESK_GUIDE_URL}/requests/${zendeskTicketId}`
-    sendConfirmation(ticket)
+    myTicket.zendeskTicketId = `PPS-${zendeskTicketId}`
+    myTicket.zendeskTicketUrl = `https://support.atomicobject.com/hc/en-us/requests/${zendeskTicketId}`
+    sendConfirmation(myTicket)
   } catch (err) {
     debug('Error: %o', err)
   }
